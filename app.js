@@ -1,6 +1,8 @@
 const express = require("express");
+const router = require("./server/api/index");
 const route = require("./router");
 const app = express();
+require("./models/db");
 const multer = require("multer");
 const socket = require("./socket.js");
 const cors = require("cors");
@@ -9,8 +11,8 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(cors());
 
-// app.use("/", route);
-app.use("/", (req, res) => {
+app.use(router);
+app.use("/socket", (req, res) => {
     socket.createAnEvent();
     return res.send("hello");
 })
