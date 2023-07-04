@@ -4,7 +4,7 @@ const userSchema = new mongoose.Schema({
     "name": String,
     "password": String,
     "group": {
-        "deposite": Number,
+        "deposit": Number,
         "mealCount": Number,
         "expense": Number,
         "dueAmount": Number
@@ -13,8 +13,14 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    "groupId": String
-
+    "groupId": {
+        type: String,
+        default: ""
+    },
+    "userId": {
+        type: String,
+        required: true
+    },
 });
 
 module.exports = mongoose.model("User", userSchema, "users");
