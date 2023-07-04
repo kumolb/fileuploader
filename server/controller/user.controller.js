@@ -43,7 +43,7 @@ module.exports = {
     deleteUser: async (req, res) => {
         try {
             let { id } = req.params;
-            let deletedUser = await User.deleteOne({ userId: id }).sort({ _id: -1 }).lean();
+            let deletedUser = await User.deleteOne({ userId: id }).lean();
             return deletedUser ? success(res, "successfully deleted", {}) : notFound(res, "no user found", {});
         } catch (err) {
             return throughError(res, err);
